@@ -364,7 +364,7 @@ type
     BorderMode: array [0 .. 3] of Integer; (* Ignored by OpenCV. *)
     BorderConst: array [0 .. 3] of Integer; (* Ditto. *)
     imageDataOrigin: pByte; (* Pointer to very origin of image data *)
-    function _IplImage(const Mat: Pointer): TIplImage;
+//    function _IplImage(const Mat: Pointer): TIplImage;
   end;
 
   // type       _IplTileInfo IplTileInfo = ;
@@ -2173,7 +2173,7 @@ function iif(const Conditional: Boolean; const ifTrue, ifFalse: Pointer): Pointe
 
 implementation
 
-Uses core_c, System.SysUtils, Mat;
+Uses core_c, System.SysUtils{, Mat};
 
 function strdup(const str: pCVChar): pCVChar;
 begin
@@ -2534,16 +2534,16 @@ begin
     Result := Result or IPL_DEPTH_SIGN;
 end;
 
-{ TIplImage }
-
-function TIplImage._IplImage(const Mat: Pointer): TIplImage;
-Var
-  IIMat: IMat;
-begin
-  IIMat := IMat(Mat);
-  Assert(IIMat.dims <= 2);
-  cvInitImageHeader(@Self, CvSize(IIMat.cols, IIMat.rows), cvIplDepth(IIMat.flags), IIMat.channels);
-  cvSetData(@Self, IIMat.data, IIMat.step1);
-end;
+//{ TIplImage }
+//
+//function TIplImage._IplImage(const Mat: Pointer): TIplImage;
+//Var
+//  IIMat: IMat;
+//begin
+//  IIMat := IMat(Mat);
+//  Assert(IIMat.dims <= 2);
+//  cvInitImageHeader(@Self, CvSize(IIMat.cols, IIMat.rows), cvIplDepth(IIMat.flags), IIMat.channels);
+//  cvSetData(@Self, IIMat.data, IIMat.step1);
+//end;
 
 end.
