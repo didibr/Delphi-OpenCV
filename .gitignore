@@ -41,3 +41,5 @@ __history
 *.suo
 
 *.vlb
+
+/bin/*.bsc
