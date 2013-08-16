@@ -30,7 +30,7 @@ object MainForm: TMainForm
     Width = 145
     Height = 21
     Style = csDropDownList
-    TabOrder = 0
+    TabOrder = 1
     OnChange = cbb1Change
     Items.Strings = (
       'None'
@@ -48,7 +48,7 @@ object MainForm: TMainForm
     OnClick = chk1Click
   end
   object ocvw1: TocvView
-    Left = 8
+    Left = 13
     Top = 8
     Width = 289
     Height = 297
@@ -56,13 +56,14 @@ object MainForm: TMainForm
   end
   object ocvcmr1: TocvCamera
     Enabled = True
-    Left = 140
-    Top = 128
+    Resolution = r160x120
+    Left = 348
+    Top = 240
   end
   object ocvmgprtn1: TocvImageOperation
     VideoSource = ocvcmr1
     ImageOperation = ioNone
-    Left = 140
-    Top = 76
+    Left = 348
+    Top = 184
   end
 end

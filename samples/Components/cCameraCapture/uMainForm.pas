@@ -19,9 +19,7 @@ type
     procedure cbb1Change(Sender: TObject);
     procedure chk1Click(Sender: TObject);
   private
-    { Private declarations }
   public
-    { Public declarations }
   end;
 
 var
@@ -33,7 +31,7 @@ implementation
 
 procedure TMainForm.cbb1Change(Sender: TObject);
 begin
-  ocvmgprtn1.ImageOperation := TcvImageOperation(cbb1.ItemIndex);
+  ocvmgprtn1.ImageOperation := TcvImageOperations(cbb1.ItemIndex);
 end;
 
 procedure TMainForm.chk1Click(Sender: TObject);

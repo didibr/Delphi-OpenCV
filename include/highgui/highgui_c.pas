@@ -97,7 +97,8 @@ unit highgui_c;
 interface
 
 uses
-  core.types_c, Core_C;
+  core.types_c,
+  Core_C;
 
 (* ***************************************************************************************\
   *                                  Basic GUI functions                                   *
@@ -105,14 +106,14 @@ uses
 
 (* For font *)
 const
-  CV_FONT_LIGHT = 25; // QFont::Light;
-  CV_FONT_NORMAL = 50; // QFont::Normal;
+  CV_FONT_LIGHT    = 25; // QFont::Light;
+  CV_FONT_NORMAL   = 50; // QFont::Normal;
   CV_FONT_DEMIBOLD = 63; // QFont::DemiBold;
-  CV_FONT_BOLD = 75; // QFont::Bold;
-  CV_FONT_BLACK = 87; // QFont::Black;
-  CV_STYLE_NORMAL = 0; // QFont::StyleNormal;
-  CV_STYLE_ITALIC = 1; // QFont::StyleItalic;
-  CV_STYLE_OBLIQUE = 2; // QFont::StyleOblique;
+  CV_FONT_BOLD     = 75; // QFont::Bold;
+  CV_FONT_BLACK    = 87; // QFont::Black;
+  CV_STYLE_NORMAL  = 0;  // QFont::StyleNormal;
+  CV_STYLE_ITALIC  = 1;  // QFont::StyleItalic;
+  CV_STYLE_OBLIQUE = 2;  // QFont::StyleOblique;
   (* --------- *)
 
   // for color cvScalar(blue_component, green_component, red\_component[, alpha_component])
@@ -145,10 +146,10 @@ function cvStartWindowThread: Integer; cdecl;
 // ---------  YV ---------
 // These 3 flags are used by cvSet/GetWindowProperty;
 const
-  CV_WND_PROP_FULLSCREEN = 0; // to change/get window's fullscreen property
-  CV_WND_PROP_AUTOSIZE = 1; // to change/get window's autosize property
+  CV_WND_PROP_FULLSCREEN  = 0; // to change/get window's fullscreen property
+  CV_WND_PROP_AUTOSIZE    = 1; // to change/get window's autosize property
   CV_WND_PROP_ASPECTRATIO = 2; // to change/get window's aspectratio property
-  CV_WND_PROP_OPENGL = 3; // to change/get window's opengl support
+  CV_WND_PROP_OPENGL      = 3; // to change/get window's opengl support
   // These 2 flags are used by cvNamedWindow and cvSet/GetWindowProperty;
   CV_WINDOW_NORMAL = $00000000;
   // the user can resize the window (no raint)  / also use to switch a fullscreen window to a normal size
@@ -157,11 +158,11 @@ const
   CV_WINDOW_OPENGL = $00001000; // window with opengl support
   // Those flags are only for Qt;
   CV_GUI_EXPANDED = $00000000; // status bar and tool bar
-  CV_GUI_NORMAL = $00000010; // old fashious way
+  CV_GUI_NORMAL   = $00000010; // old fashious way
   // These 3 flags are used by cvNamedWindow and cvSet/GetWindowProperty;
-  CV_WINDOW_FULLSCREEN = 1; // change the window to fullscreen
-  CV_WINDOW_FREERATIO = $00000100; // the image expends as much as it can (no ratio raint)
-  CV_WINDOW_KEEPRATIO = $00000000; // the ration image is respected.;
+  CV_WINDOW_FULLSCREEN = 1;         // change the window to fullscreen
+  CV_WINDOW_FREERATIO  = $00000100; // the image expends as much as it can (no ratio raint)
+  CV_WINDOW_KEEPRATIO  = $00000000; // the ration image is respected.;
 
   (* create window *)
 function cvNamedWindow(const name: pCVChar; flags: Integer = CV_WINDOW_AUTOSIZE): Integer; cdecl;
@@ -212,22 +213,22 @@ function cvCreateTrackbar2(const trackbar_name: pCVChar; const window_name: pCVC
 // CVAPI(procedure)cvSetTrackbarPos(trackbar_name: PCVChar; window_name: PCVChar; pos: Integer);
 
 const
-  CV_EVENT_MOUSEMOVE = 0;
-  CV_EVENT_LBUTTONDOWN = 1;
-  CV_EVENT_RBUTTONDOWN = 2;
-  CV_EVENT_MBUTTONDOWN = 3;
-  CV_EVENT_LBUTTONUP = 4;
-  CV_EVENT_RBUTTONUP = 5;
-  CV_EVENT_MBUTTONUP = 6;
+  CV_EVENT_MOUSEMOVE     = 0;
+  CV_EVENT_LBUTTONDOWN   = 1;
+  CV_EVENT_RBUTTONDOWN   = 2;
+  CV_EVENT_MBUTTONDOWN   = 3;
+  CV_EVENT_LBUTTONUP     = 4;
+  CV_EVENT_RBUTTONUP     = 5;
+  CV_EVENT_MBUTTONUP     = 6;
   CV_EVENT_LBUTTONDBLCLK = 7;
   CV_EVENT_RBUTTONDBLCLK = 8;
   CV_EVENT_MBUTTONDBLCLK = 9;
-  CV_EVENT_FLAG_LBUTTON = 1;
-  CV_EVENT_FLAG_RBUTTON = 2;
-  CV_EVENT_FLAG_MBUTTON = 4;
-  CV_EVENT_FLAG_CTRLKEY = 8;
+  CV_EVENT_FLAG_LBUTTON  = 1;
+  CV_EVENT_FLAG_RBUTTON  = 2;
+  CV_EVENT_FLAG_MBUTTON  = 4;
+  CV_EVENT_FLAG_CTRLKEY  = 8;
   CV_EVENT_FLAG_SHIFTKEY = 16;
-  CV_EVENT_FLAG_ALTKEY = 32;
+  CV_EVENT_FLAG_ALTKEY   = 32;
 
 type
   CvMouseCallback = procedure(event: Integer; x: Integer; y: Integer; flags: Integer; param: Pointer); cdecl;
@@ -268,15 +269,15 @@ function cvLoadImage(const filename: pCVChar; iscolor: Integer = CV_LOAD_IMAGE_C
 // Integer iscolor CV_DEFAULT(CV_LOAD_IMAGE_COLOR));
 
 const
-  CV_IMWRITE_JPEG_QUALITY = 1;
-  CV_IMWRITE_PNG_COMPRESSION = 16;
-  CV_IMWRITE_PNG_STRATEGY = 17;
-  CV_IMWRITE_PNG_STRATEGY_DEFAULT = 0;
-  CV_IMWRITE_PNG_STRATEGY_FILTERED = 1;
+  CV_IMWRITE_JPEG_QUALITY              = 1;
+  CV_IMWRITE_PNG_COMPRESSION           = 16;
+  CV_IMWRITE_PNG_STRATEGY              = 17;
+  CV_IMWRITE_PNG_STRATEGY_DEFAULT      = 0;
+  CV_IMWRITE_PNG_STRATEGY_FILTERED     = 1;
   CV_IMWRITE_PNG_STRATEGY_HUFFMAN_ONLY = 2;
-  CV_IMWRITE_PNG_STRATEGY_RLE = 3;
-  CV_IMWRITE_PNG_STRATEGY_FIXED = 4;
-  CV_IMWRITE_PXM_BINARY = 32;
+  CV_IMWRITE_PNG_STRATEGY_RLE          = 3;
+  CV_IMWRITE_PNG_STRATEGY_FIXED        = 4;
+  CV_IMWRITE_PXM_BINARY                = 32;
 
   (* save image to file *)
   // CVAPI(Integer)cvSaveImage(PCVChar filename, CvArr * image,
@@ -297,7 +298,7 @@ function cvSaveImage(const filename: pCVChar; const image: Pointer; const params
 // function params CV_DEFAULT(v1: 0)): Integer;
 
 const
-  CV_CVTIMG_FLIP = 1;
+  CV_CVTIMG_FLIP    = 1;
   CV_CVTIMG_SWAP_RB = 2;
 
   {
@@ -334,30 +335,36 @@ type
 function cvCreateFileCapture(const filename: pCVChar): pCvCapture; cdecl;
 
 const
-  CV_CAP_ANY = 0; // autodetect
-  CV_CAP_MIL = 100; // MIL proprietary drivers
-  CV_CAP_VFW = 200; // platform native
-  CV_CAP_V4L = 200;
-  CV_CAP_V4L2 = 200;
-  CV_CAP_FIREWARE = 300; // IEEE 1394 drivers
-  CV_CAP_FIREWIRE = 300;
-  CV_CAP_IEEE1394 = 300;
-  CV_CAP_DC1394 = 300;
-  CV_CAP_CMU1394 = 300;
-  CV_CAP_STEREO = 400; // TYZX proprietary drivers
-  CV_CAP_TYZX = 400;
-  CV_TYZX_LEFT = 400;
-  CV_TYZX_RIGHT = 401;
-  CV_TYZX_COLOR = 402;
-  CV_TYZX_Z = 403;
-  CV_CAP_QT = 500; // QuickTime
-  CV_CAP_UNICAP = 600; // Unicap drivers
-  CV_CAP_DSHOW = 700; // DirectShow (via videoInput)
-  CV_CAP_PVAPI = 800; // PvAPI; Prosilica GigE SDK
-  CV_CAP_OPENNI = 900; // OpenNI (for Kinect)
-  CV_CAP_OPENNI_ASUS = 910; // OpenNI (for Asus Xtion)
-  CV_CAP_ANDROID = 1000; // Android
-  CV_CAP_XIAPI = 1100; // XIMEA Camera API
+  CV_CAP_ANY          = 0;   // autodetect
+  CV_CAP_CAM_0        = 0;   // Camera 0 = autodetect
+  CV_CAP_CAM_1        = 1;   // Camera 1
+  CV_CAP_CAM_2        = 2;   // Camera 2
+  CV_CAP_CAM_3        = 3;   // Camera 3
+  CV_CAP_CAM_4        = 4;   // Camera 4
+  CV_CAP_CAM_5        = 5;   // Camera 5
+  CV_CAP_MIL          = 100; // MIL proprietary drivers
+  CV_CAP_VFW          = 200; // platform native
+  CV_CAP_V4L          = 200;
+  CV_CAP_V4L2         = 200;
+  CV_CAP_FIREWARE     = 300; // IEEE 1394 drivers
+  CV_CAP_FIREWIRE     = 300;
+  CV_CAP_IEEE1394     = 300;
+  CV_CAP_DC1394       = 300;
+  CV_CAP_CMU1394      = 300;
+  CV_CAP_STEREO       = 400; // TYZX proprietary drivers
+  CV_CAP_TYZX         = 400;
+  CV_TYZX_LEFT        = 400;
+  CV_TYZX_RIGHT       = 401;
+  CV_TYZX_COLOR       = 402;
+  CV_TYZX_Z           = 403;
+  CV_CAP_QT           = 500;  // QuickTime
+  CV_CAP_UNICAP       = 600;  // Unicap drivers
+  CV_CAP_DSHOW        = 700;  // DirectShow (via videoInput)
+  CV_CAP_PVAPI        = 800;  // PvAPI; Prosilica GigE SDK
+  CV_CAP_OPENNI       = 900;  // OpenNI (for Kinect)
+  CV_CAP_OPENNI_ASUS  = 910;  // OpenNI (for Asus Xtion)
+  CV_CAP_ANDROID      = 1000; // Android
+  CV_CAP_XIAPI        = 1100; // XIMEA Camera API
   CV_CAP_AVFOUNDATION = 1200;
   // AVFoundation framework for iOS (OS X Lion will have the same API);
 
@@ -729,8 +736,8 @@ function cvSetCaptureProperty(capture: pCvCapture; property_id: Integer; value: 
 // type
 // CvVideoWriter = deoWriter;
 type
-  TCvVideoWriter = Integer;
-  pCvVideoWriter = ^TCvVideoWriter;
+  TCvVideoWriter  = Integer;
+  pCvVideoWriter  = ^TCvVideoWriter;
   ppCvVideoWriter = ^pCvVideoWriter;
   //
   // CV_INLINE

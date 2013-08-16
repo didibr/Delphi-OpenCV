@@ -11,17 +11,19 @@ Uses
   System.Classes,
   uOCVCamera,
   uOCVView,
-  uOCVImageOperation;
+  uOCVImageOperation
+//  ,dOCVImageOperation
+  ;
 
 procedure Register;
 begin
   RegisterComponents('OpenCV', [TocvImageOperation]);
-  UnlistPublishedProperty(TocvCustomImageOperations, 'Tag');
-  UnlistPublishedProperty(TocvCustomImageOperations, 'Name');
-//  RegisterClasses([TocvImageOperationNone,TocvImageOperationGrayScale,TovcImageOperationCanny,TovcImageOperationSmooth]);
-
+//  RegisterPropertyEditor(TypeInfo(TocvCustomImageOperations), TocvImageOperation, 'ImageOperation', TImageOperationPropertyEditor);
   RegisterComponents('OpenCV', [TocvCamera]);
   RegisterComponents('OpenCV', [TocvView]);
+//  UnlistPublishedProperty(TocvCustomImageOperations, 'Tag');
+//  UnlistPublishedProperty(TocvCustomImageOperations, 'Name');
+//  RegisterClasses([TocvImageOperationNone,TocvImageOperationGrayScale,TovcImageOperationCanny,TovcImageOperationSmooth]);
 end;
 
 end.
